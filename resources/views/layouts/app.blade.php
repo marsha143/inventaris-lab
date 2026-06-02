@@ -31,18 +31,10 @@
             color: var(--text);
         }
 
-        /* =========================
-   LAYOUT
-========================= */
-
         .layout {
             display: flex;
             min-height: 100vh;
         }
-
-        /* =========================
-   SIDEBAR
-========================= */
 
         .sidebar {
             width: 270px;
@@ -64,18 +56,12 @@
             height: 70px;
             margin: auto;
             border-radius: 20px;
-
-            background: linear-gradient(135deg,
-                    #ec4899,
-                    #db2777);
-
+            background: linear-gradient(135deg, #ec4899, #db2777);
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: white;
             font-size: 30px;
-
             box-shadow: 0 10px 25px rgba(236, 72, 153, .3);
         }
 
@@ -97,13 +83,9 @@
         .sidebar-menu a {
             text-decoration: none;
             color: #4b5563;
-
             padding: 14px 18px;
-
             border-radius: 15px;
-
             font-weight: 600;
-
             transition: .3s;
         }
 
@@ -113,23 +95,14 @@
         }
 
         .sidebar-menu a.active {
-            background: linear-gradient(135deg,
-                    #ec4899,
-                    #db2777);
-
+            background: linear-gradient(135deg, #ec4899, #db2777);
             color: white;
-
-            box-shadow:
-                0 10px 20px rgba(236, 72, 153, .25);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, .25);
         }
 
         .sidebar-menu i {
             margin-right: 10px;
         }
-
-        /* =========================
-   CONTENT
-========================= */
 
         .main {
             margin-left: 270px;
@@ -137,24 +110,15 @@
             padding: 30px;
         }
 
-        /* =========================
-   HEADER
-========================= */
-
         .topbar {
             background: white;
             border-radius: 25px;
-
             padding: 20px 30px;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             margin-bottom: 25px;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
         }
 
         .topbar h3 {
@@ -170,67 +134,37 @@
         .user-box {
             width: 45px;
             height: 45px;
-
             border-radius: 50%;
-
-            background: linear-gradient(135deg,
-                    #ec4899,
-                    #db2777);
-
+            background: linear-gradient(135deg, #ec4899, #db2777);
             color: white;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-weight: bold;
+            border: none;
         }
-
-        /* =========================
-   CONTENT CARD
-========================= */
 
         .content-wrapper {
             background: white;
             border-radius: 25px;
             padding: 30px;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
         }
-
-        /* =========================
-   CARD
-========================= */
 
         .card {
             border: none;
             border-radius: 25px;
-            box-shadow:
-                0 10px 25px rgba(236, 72, 153, .08);
+            box-shadow: 0 10px 25px rgba(236, 72, 153, .08);
         }
-
-        /* =========================
-   BUTTON
-========================= */
 
         .btn-primary {
             border: none;
-
-            background: linear-gradient(135deg,
-                    #ec4899,
-                    #db2777);
+            background: linear-gradient(135deg, #ec4899, #db2777);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg,
-                    #db2777,
-                    #be185d);
+            background: linear-gradient(135deg, #db2777, #be185d);
         }
-
-        /* =========================
-   FORM
-========================= */
 
         .form-control,
         .form-select {
@@ -242,13 +176,8 @@
         .form-control:focus,
         .form-select:focus {
             border-color: #ec4899;
-            box-shadow:
-                0 0 0 .25rem rgba(236, 72, 153, .15);
+            box-shadow: 0 0 0 .25rem rgba(236, 72, 153, .15);
         }
-
-        /* =========================
-   TABLE
-========================= */
 
         .table {
             border-collapse: collapse;
@@ -273,19 +202,11 @@
             background: #6b7280 !important;
         }
 
-        /* =========================
-   FOOTER
-========================= */
-
         .footer {
             text-align: center;
             margin-top: 30px;
             color: #9ca3af;
         }
-
-        /* =========================
-   MOBILE
-========================= */
 
         @media(max-width:991px) {
 
@@ -310,7 +231,6 @@
             }
         }
     </style>
-
 </head>
 
 <body>
@@ -320,15 +240,12 @@
         <aside class="sidebar">
 
             <div class="logo">
-
                 <div class="logo-circle">
                     <i class="bi bi-box-seam"></i>
                 </div>
 
                 <h4>Inventaris Lab</h4>
-
                 <small>Management System</small>
-
             </div>
 
             <div class="sidebar-menu">
@@ -339,12 +256,14 @@
                     Inventaris
                 </a>
 
-                <a href="{{ route('kategori.index') }}" class="{{ request()->routeIs('kategori.*') ? 'active' : '' }}">
+                <a href="{{ route('kategori.index') }}"
+                    class="{{ request()->routeIs('kategori.*') ? 'active' : '' }}">
                     <i class="bi bi-tags"></i>
                     Kategori
                 </a>
 
-                <a href="{{ route('kondisi.index') }}" class="{{ request()->routeIs('kondisi.*') ? 'active' : '' }}">
+                <a href="{{ route('kondisi.index') }}"
+                    class="{{ request()->routeIs('kondisi.*') ? 'active' : '' }}">
                     <i class="bi bi-clipboard-check"></i>
                     Kondisi
                 </a>
@@ -362,17 +281,72 @@
                     <p>Sistem Inventaris Laboratorium</p>
                 </div>
 
-                <div class="user-box">
-                    <i class="bi bi-person-fill"></i>
+                <div class="dropdown">
+
+                    <button
+                        class="user-box"
+                        type="button"
+                        data-bs-toggle="dropdown">
+
+                        <i class="bi bi-person-fill"></i>
+
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+
+                        @auth
+                            <li>
+                                <span class="dropdown-item-text fw-bold">
+                                    {{ auth()->user()->name }}
+                                </span>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <form action="{{ route('logout') }}"
+                                    method="POST">
+                                    @csrf
+
+                                    <button
+                                        type="submit"
+                                        class="dropdown-item text-danger">
+
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        Logout
+
+                                    </button>
+                                </form>
+                            </li>
+                        @endauth
+
+                        @guest
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('login') }}">
+                                    Login
+                                </a>
+                            </li>
+                        @endguest
+
+                    </ul>
+
                 </div>
 
             </div>
 
-            <div class="content-wrapper">
+<div class="content-wrapper">
 
-                @yield('content')
+    <div class="alert alert-warning">
+        Auth Check : {{ Auth::check() ? 'YA' : 'TIDAK' }} <br>
+        User : {{ auth()->user()?->name }}
+    </div>
 
-            </div>
+    @yield('content')
+
+</div>
 
             <div class="footer">
                 © 2026 Inventaris Lab • Politeknik Takumi

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
@@ -14,10 +15,11 @@ class InventarisController extends Controller
 
         if ($request->filled('q')) {
             $q = $request->q;
+
             $query->where(function ($data) use ($q) {
                 $data->where('kode_barang', 'like', "%{$q}%")
-                     ->orWhere('nama_barang', 'like', "%{$q}%")
-                     ->orWhere('lokasi', 'like', "%{$q}%");
+                    ->orWhere('nama_barang', 'like', "%{$q}%")
+                    ->orWhere('lokasi', 'like', "%{$q}%");
             });
         }
 
@@ -30,17 +32,25 @@ class InventarisController extends Controller
         }
 
         $inventaris = $query->paginate(5)->withQueryString();
-        $kategoris  = Kategori::orderBy('nama')->get();
-        $kondisis   = Kondisi::orderBy('nama')->get();
+        $kategoris = Kategori::orderBy('nama')->get();
+        $kondisis = Kondisi::orderBy('nama')->get();
 
-        return view('inventaris.index', compact('inventaris', 'kategoris', 'kondisis'));
+        return view('inventaris.index', compact(
+            'inventaris',
+            'kategoris',
+            'kondisis'
+        ));
     }
 
     public function create()
     {
         $kategoris = Kategori::orderBy('nama')->get();
-        $kondisis  = Kondisi::orderBy('nama')->get();
-        return view('inventaris.create', compact('kategoris', 'kondisis'));
+        $kondisis = Kondisi::orderBy('nama')->get();
+
+        return view('inventaris.create', compact(
+            'kategoris',
+            'kondisis'
+        ));
     }
 
     public function store(Request $request)
@@ -59,20 +69,25 @@ class InventarisController extends Controller
 
         Inventaris::create($validated);
 
-        return redirect()->route('inventaris.index')
+        return redirect()
+            ->route('inventaris.index')
             ->with('success', 'Data inventaris berhasil ditambahkan.');
     }
 
     public function show(Inventaris $inventari)
     {
         $inventari->load(['kategori', 'kondisi']);
-        return view('inventaris.show', ['item' => $inventari]);
+
+        return view('inventaris.show', [
+            'item' => $inventari
+        ]);
     }
 
     public function edit(Inventaris $inventari)
     {
         $kategoris = Kategori::orderBy('nama')->get();
-        $kondisis  = Kondisi::orderBy('nama')->get();
+        $kondisis = Kondisi::orderBy('nama')->get();
+
         return view('inventaris.edit', [
             'item'      => $inventari,
             'kategoris' => $kategoris,
@@ -96,14 +111,17 @@ class InventarisController extends Controller
 
         $inventari->update($validated);
 
-        return redirect()->route('inventaris.index')
+        return redirect()
+            ->route('inventaris.index')
             ->with('success', 'Data inventaris berhasil diperbarui.');
     }
 
     public function destroy(Inventaris $inventari)
     {
         $inventari->delete();
-        return redirect()->route('inventaris.index')
+
+        return redirect()
+            ->route('inventaris.index')
             ->with('success', 'Data inventaris berhasil dihapus.');
     }
 }

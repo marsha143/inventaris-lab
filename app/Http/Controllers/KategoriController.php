@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
@@ -12,6 +13,7 @@ class KategoriController extends Controller
 
         if ($request->filled('q')) {
             $q = $request->q;
+
             $query->where(function ($data) use ($q) {
                 $data->where('kode', 'like', "%{$q}%")
                      ->orWhere('nama', 'like', "%{$q}%");
@@ -19,6 +21,7 @@ class KategoriController extends Controller
         }
 
         $kategoris = $query->paginate(10)->withQueryString();
+
         return view('kategori.index', compact('kategoris'));
     }
 
@@ -66,6 +69,7 @@ class KategoriController extends Controller
         }
 
         $kategori->delete();
+
         return redirect()->route('kategori.index')
             ->with('success', 'Kategori berhasil dihapus.');
     }
