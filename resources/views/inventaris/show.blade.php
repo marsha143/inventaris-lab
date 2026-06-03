@@ -39,6 +39,31 @@
             <th>Keterangan</th>
             <td>{{ $item->keterangan ?? '-' }}</td>
         </tr>
+        <tr>
+    <th>Foto Barang</th>
+    <td>
+        @if ($item->foto_path)
+            <img src="{{ asset('storage/' . $item->foto_path) }}"
+                alt="Foto {{ $item->nama_barang }}"
+                width="260" class="rounded border">
+        @else
+            <span class="text-muted">Belum ada foto</span>
+        @endif
+    </td>
+</tr>
+<tr>
+    <th>Dokumen Pendukung</th>
+    <td>
+        @if ($item->dokumen_path)
+            <a href="{{ asset('storage/' . $item->dokumen_path) }}"
+                target="_blank" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-file-earmark"></i> Buka Dokumen
+            </a>
+        @else
+            <span class="text-muted">Belum ada dokumen</span>
+        @endif
+    </td>
+</tr>
     </table>
     <p>
         <a class="btn btn-warning" href="{{ route('inventaris.edit', $item) }}">Edit</a>

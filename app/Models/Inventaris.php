@@ -20,6 +20,8 @@ class Inventaris extends Model
         'jumlah',
         'tanggal_pengadaan',
         'keterangan',
+         'foto_path',
+         'dokumen_path',
     ];
 
     public function kategori()

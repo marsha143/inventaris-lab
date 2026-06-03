@@ -191,6 +191,9 @@
 
                         <tr>
                             <th>Kode</th>
+                            @if (auth()->user()->role === 'admin')
+                                <th>Foto</th>
+                            @endif
                             <th>Nama Barang</th>
                             <th>Kategori</th>
                             <th>Lokasi</th>
@@ -209,6 +212,17 @@
                                 <td>
                                     <strong>{{ $item->kode_barang }}</strong>
                                 </td>
+
+                                @if (auth()->user()->role === 'admin')
+                                    <td>
+                                        @if ($item->foto_path)
+                                            <img src="{{ asset('storage/' . $item->foto_path) }}" alt="Foto"
+                                                width="60" class="rounded border">
+                                        @else
+                                            <span class="text-muted small">-</span>
+                                        @endif
+                                    </td>
+                                @endif
 
                                 <td>
 

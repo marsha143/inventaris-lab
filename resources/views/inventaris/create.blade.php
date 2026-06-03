@@ -15,7 +15,7 @@
         </p>
     </div>
 
-    <form action="{{ route('inventaris.store') }}" method="POST">
+<form action="{{ route('inventaris.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="card border-0 shadow-lg">
@@ -204,6 +204,25 @@
                         <textarea name="keterangan" rows="4" class="form-control" placeholder="Masukkan keterangan tambahan...">{{ old('keterangan') }}</textarea>
 
                     </div>
+                    {{-- FOTO BARANG --}}
+<div class="col-md-6">
+    <label class="form-label">Foto Barang</label>
+    <input type="file" name="foto_barang" class="form-control"
+        accept="image/jpg,image/jpeg,image/png,image/webp">
+    @error('foto_barang')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
+
+{{-- DOKUMEN PENDUKUNG --}}
+<div class="col-md-6">
+    <label class="form-label">Dokumen Pendukung</label>
+    <input type="file" name="dokumen_pendukung" class="form-control"
+        accept=".pdf,.doc,.docx">
+    @error('dokumen_pendukung')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
 
                 </div>
 

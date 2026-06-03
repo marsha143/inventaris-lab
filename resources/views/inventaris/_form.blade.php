@@ -139,6 +139,46 @@
 
         </div>
 
+<div class="col-12 mb-3">
+    <label class="form-label fw-semibold">Foto Barang</label>
+
+    <input type="file" name="foto_barang" class="form-control"
+        accept="image/jpg,image/jpeg,image/png,image/webp">
+
+    @error('foto_barang')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+    @if (!empty($item?->foto_path))
+        <div class="mt-2">
+            <p class="text-muted small mb-1">Foto saat ini:</p>
+            <img src="{{ asset('storage/' . $item->foto_path) }}"
+                alt="Foto {{ $item->nama_barang }}"
+                width="160" class="rounded border">
+        </div>
+    @endif
+</div>
+
+<div class="col-12 mb-3">
+    <label class="form-label fw-semibold">Dokumen Pendukung</label>
+
+    <input type="file" name="dokumen_pendukung" class="form-control"
+        accept=".pdf,.doc,.docx">
+
+    @error('dokumen_pendukung')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+    @if (!empty($item?->dokumen_path))
+        <div class="mt-2">
+            <a href="{{ asset('storage/' . $item->dokumen_path) }}"
+                target="_blank" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-file-earmark"></i> Lihat dokumen saat ini
+            </a>
+        </div>
+    @endif
+</div>
+
         <hr>
 
         <div class="d-flex justify-content-end gap-2">
